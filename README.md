@@ -10,42 +10,43 @@ which outputs an image of a predicted lane.
 
 ## Dataset
 
-- The data consists of a set of 12,000 raw training images along with marked lanes lanes used as labels for each image
+- The data consists of a set of 12,764 raw training images along with marked lanes lanes used as labels for each image
 - The labeled images were generated from polynomial coefficents marking the lane for each image
 - Each image is downsized to a uniform format of (80x160x3)
-- 
-
-
-
-
-## EDA
-
-
-### Image Processing
-
 
 
 ## Running the code
 **All code is stored in base directory**
-- To train the model, simply run
+- To train the model, run
     ```
-    python model.py
+    python main.py
+    ```
+- To generate image predictiction, run
+    ```
+    python predict_lines.py
     ```
 
 ## Training
 
+The best trained model uses a fully convoluational neural network
+The model takes in the road image and encodes it up to a filter size of 1024 before decoding it back down to
+the final layer with a filter size of 1. The encoder decoder architecture 
+
+<img src = "figures/encoder_decoder.png">
+
+
 <img src = "figures/model_summary.png" width = 300>
-
-
-
 
 
 ## Results
 
 ### Predicted Lane Segments on previously seen data
 <img src = "figures/Combined_CNN2.png" width = 200>
-<img src = "figures/Combined_CNN3.png" width = 200>
-<img src = "figures/Combined_image_CNN3.png" width = 200>
+<img src = "figures/Combined_CNN3.png" width = 300>
+<img src = "figures/Combined_image_CNN3.png" width = 300>
+
+The model showed posed relatively accurate lane segments when predicting on the previously trained data. This is clear as the model has already been
+fitted to this data with raw images and polynomial labels fitted to the data.
 
 
 
@@ -53,6 +54,10 @@ which outputs an image of a predicted lane.
 <img src = "figures/combined_unseen1.png" width = 300>
 <img src = "figures/combined_unseen4.png" width = 300>
 <img src = "figures/combined_unseen8.png" width = 300>
+
+When applying the model to unseen images, entire roadways tend to be marked rather than specific lanes.
+This is likely due to the fact that lane markings can be difficult to identify as the difference in pixel color is not significant compared
+to the pixel change between roadway and surrounding area.
 
 
 
@@ -66,7 +71,6 @@ which outputs an image of a predicted lane.
 * [OpenCV](https://pypi.org/project/opencv-python/)
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [NumPy](https://numpy.org)
-* [Autonomous Vehicle Simulator](https://github.com/udacity/self-driving-car-sim)
 
 
 ### Citations:

@@ -20,7 +20,7 @@ def make_lines(image, model, lanes):
     returns combined image"""
 
     # Get image ready for feeding into model
-
+    small_img = image
     small_img = np.array(small_img)
     small_img = small_img[None,:,:,:]
 
@@ -43,7 +43,7 @@ def make_lines(image, model, lanes):
     lane_image = cv2.resize(lane_drawn, (160, 80), 3)
 
     # Plot two images side by side
-    plot_side_by_side(image, lane_image)
+    # plot_side_by_side(image, lane_image)
 
     # Merge the lane drawing onto the original image
     combined = (image*1 + lane_image*1).astype(int)
@@ -89,7 +89,7 @@ def load_images(path):
     for filename in glob.glob(path):
         im = Image.open(filename)
         image_list.append(im)
-        if i > 50: # Debugging error with having too many files open simulataneously
+        if i > 85: # Debugging error with having too many files open simulataneously
             break
         i += 1
     return image_list
@@ -100,8 +100,11 @@ def predict_unseen(path, model, lanes):
     """
     imgs = load_images(path)
 
-    for i, img in enumerate(imgs[10:70]):
+    for i, img in enumerate(imgs[0:10]):
+        img = np.array(img)
+        img = cv2.resize(img, (160,80))
         combined = make_lines(img, model, lanes)
+        plot_combined(combined)
 
         im = Image.fromarray((combined).astype(np.uint8))
         im.save(f"unseen_images/img{i}.png")
@@ -131,13 +134,14 @@ def main():
     """ Main functions which calls all other functions in program file
     """
     model = get_model()
+    print(model.summary())
 
     lanes = Lanes()
     make_pred_seen(model, lanes)
 
     path = "/Users/adam/Desktop/galvanize/capstones/semantic_lane_detect/data/data_road/testing/image_2/*.png"
 
-    # predict_unseen(path, model, lanes)
+    predict_unseen(path, model, lanes)
     # make_video()
 
 

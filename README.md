@@ -43,9 +43,9 @@ which outputs an image of a predicted lane.
 ## Results
 
 ### Predicted Lane Segments on previously seen data
-<img src = "figures/Combined_CNN2.png" width = 300>
-<img src = "figures/Combined_CNN3.png" width = 300>
-<img src = "figures/Combined_image_CNN3.png" width = 300>
+<img src = "figures/Combined_CNN2.png" width = 200>
+<img src = "figures/Combined_CNN3.png" width = 200>
+<img src = "figures/Combined_image_CNN3.png" width = 200>
 
 
 

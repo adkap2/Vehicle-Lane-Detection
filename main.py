@@ -18,7 +18,7 @@ from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 from keras.preprocessing.image import ImageDataGenerator
 import pandas as pd
-
+from keras.models import load_model
 
 NUM_CLASSES = 2
 
@@ -125,7 +125,9 @@ def build_model(input_shape):
 
 
 def fit_model(imgs, labels, model):
-
+    """ Trains compiled model by fitting it to resized training and validation data.
+    Trains against provided lane segmentation labels
+    Returns -> history (evaluation)"""
     # Converts images to np array
     train_images = np.array(imgs)
     labels = np.array(labels)
@@ -139,26 +141,21 @@ def fit_model(imgs, labels, model):
     dataset = [X_train, X_val, y_train, y_val]
     # Arbitrary batch size
     batch_size = 128
-
     # Currently 10 epochs although model seems to converge early so may
     # Experiement with lower epochs
     epochs = 10
-
     # Builds data generator to limit amount of image data stored in memory
     datagen = ImageDataGenerator(channel_shift_range=0.2)
     datagen.fit(X_train)
     # Sets call backs to stop model training early if loss converges, also saves model after each epoch
     callbacks = [EarlyStopping(monitor='loss', patience=3), ModelCheckpoint(filepath = 'model4.h5', monitor='val_loss', save_best_only=True)]
-
     # Fits model
+    # Test out alternative model
+    model = load_model('baseline_cnn.h5')
     history = model.fit_generator(datagen.flow(X_train, y_train, batch_size=batch_size), steps_per_epoch=len(X_train)/batch_size,
         epochs=epochs, verbose=1, callbacks=callbacks, validation_data=(X_val, y_val))
-    
-    with open('/trainhistorydict0', 'wb') as file_pi:
-        pickle.dump(history.history, file_pi)
-
     # save_data(model, dataset)
-    model.save('model3.h5')
+    # model.save('model3.h5')
     model.summary()
     # Evaluates model for loss metrics
     print(model.evaluate(X_train, y_train))
@@ -170,11 +167,11 @@ def main():
     """ Calls all seperate individual functions"""
 
     imgs, labels = get_data()
+    print(len(imgs))
     input_shape = np.array(imgs).shape[1:]
 
     model = build_model(input_shape)
     history = fit_model(imgs, labels, model)
-    
 
 if __name__ == '__main__':
     main()

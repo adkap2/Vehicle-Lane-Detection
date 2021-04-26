@@ -74,7 +74,7 @@ around 1/4 that of the baseline model.
 
 
 ### Predicted Lane Segments on previously seen data
-<img src = "figures/Combined_CNN2.png" width = 300> | <img src = "figures/Combined_CNN3.png" width = 300> | <img src = "figures/Combined_image_CNN3.png" width = 300>
+<img src = "figures/Combined_CNN2.png" width = 300> <img src = "figures/Combined_CNN3.png" width = 300> <img src = "figures/Combined_image_CNN3.png" width = 300>
 
 
 
@@ -86,9 +86,7 @@ fitted to this data with raw images and polynomial labels fitted to the data.
 
 
 ### Predicted Lane Segments on unseen data
-<img src = "figures/combined_unseen1.png" width = 300>
-<img src = "figures/combined_unseen4.png" width = 300>
-<img src = "figures/combined_unseen8.png" width = 300>
+<img src = "figures/combined_unseen1.png" width = 300> <img src = "figures/combined_unseen4.png" width = 300> <img src = "figures/combined_unseen8.png" width = 300>
 
 
 

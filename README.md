@@ -78,6 +78,8 @@ This is likely due to the fact that lane markings can be difficult to identify a
 to the pixel change between roadway and surrounding area.
 
 <img src = "figures/ezgif.com-gif-maker.gif" width = 300>
+<img src = "figures/ezgif.com-gif-maker1.gif" width = 300>
+<img src = "figures/ezgif.com-gif-maker2.gif" width = 300>
 
 
 ## Moving Forward

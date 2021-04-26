@@ -55,11 +55,6 @@ can be compared against the labeled image.
 
 I decided to terminate the training at 10 epochs as the model loss seemed to converge relatively well while still before starting to overfit.
 
-
-
-
-
-
 ## Results
 
 
@@ -77,18 +72,11 @@ around 1/4 that of the baseline model.
 <img src = "figures/Combined_CNN2.png" width = 300> <img src = "figures/Combined_CNN3.png" width = 300> <img src = "figures/Combined_image_CNN3.png" width = 300>
 
 
-
-
-
 The model showed posed relatively accurate lane segments when predicting on the previously trained data. This is clear as the model has already been
 fitted to this data with raw images and polynomial labels fitted to the data.
 
-
-
 ### Predicted Lane Segments on unseen data
 <img src = "figures/combined_unseen1.png" width = 300> <img src = "figures/combined_unseen4.png" width = 300> <img src = "figures/combined_unseen8.png" width = 300>
-
-
 
 When applying the model to unseen images, entire roadways tend to be marked rather than specific lanes.
 This is likely due to the fact that lane markings can be difficult to identify as the difference in pixel color is not significant compared

@@ -14,11 +14,15 @@ which when given a driving image to predict on, outputs an image of a predicted 
 - The data consists of a set of 12,764 raw training images along with marked lanes lanes used as labels for each image
 - The labeled images were generated from polynomial coefficents marking the lane for each image
 - Each image is downsized to a uniform format of (80x160x3)
-- Training date was taking from [here](https://www.dropbox.com/s/rrh8lrdclzlnxzv/full_CNN_train.p?dl=0)
-
+- Training image data was taken from [here](https://www.dropbox.com/s/rrh8lrdclzlnxzv/full_CNN_train.p?dl=0)
+- Training label data was taken from [here](https://www.dropbox.com/s/ak850zqqfy6ily0/full_CNN_labels.p?dl=0)
+- Example images are contained in the example_images directory
 
 ## Running the code
 **All code is stored in base directory**
+
+The final CNN model used can is stored in this directory as *full_CNN_model.h5*
+
 - To train the model, run
     ```
     python main.py
@@ -49,7 +53,7 @@ can be compared against the labeled image.
 - Epochs: 10
 - Dropout: 0.2
 
-The model loss seemed to converge relatively well at 10 epochs while still taking significant time to train.
+I decided to terminate the training at 10 epochs as the model loss seemed to converge relatively well while still before starting to overfit.
 
 
 
@@ -61,6 +65,10 @@ The model loss seemed to converge relatively well at 10 epochs while still takin
 <img src = "figures/CNN_Baseline.png" width = 300>
 
 <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
+
+Baseline          |  Fully Deep CNN
+:-------------------------:|:-------------------------:
+<img src = "figures/CNN_Baseline.png" width = 300> |  <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
 Over the same range of epochs, the fully connected deep cnn model performed drastically better than the single layered baseline.
 This is due to the added depth of the model which allows it to read much further into the complexity of each image. The deep model had a final mean squared error score of
@@ -115,3 +123,6 @@ there would be no way to numerically evaluate the predictions without creating m
 
 
 ### Citations:
+-   Mvirgo. “Mvirgo/MLND-Capstone.” GitHub, github.com/mvirgo/MLND-Capstone.
+-   Dwivedi, Priya. “Real-Time Lane Detection and Alerts for Autonomous Driving.” Medium, Towards Data Science, 15 Dec. 2020, towardsdatascience.com/real-time-lane-detection-and-alerts-for-autonomous-driving-1f0a021390ee.
+-   Karunakaran, Dhanoop. “Semantic Segmentation - Udaity's Self-Driving Car Engineer Nanodegree.” Medium, Intro to Artificial Intelligence, 22 Aug. 2018, medium.com/intro-to-artificial-intelligence/semantic-segmentation-udaitys-self-driving-car-engineer-nanodegree-c01eb6eaf9d.

@@ -20,10 +20,9 @@ from keras.preprocessing.image import ImageDataGenerator
 import pandas as pd
 from keras.models import load_model
 
-NUM_CLASSES = 2
-
 def get_data():
     """ Gets training data and labels to be trained on
+    returns raw and labeled images
     """
 
     pkl = open('full_CNN_labels.p', 'rb')
@@ -167,10 +166,10 @@ def main():
     """ Calls all seperate individual functions"""
 
     imgs, labels = get_data()
-    print(len(imgs))
     input_shape = np.array(imgs).shape[1:]
-
+    # Builds model with input layers and compiles model using Adam optimizer
     model = build_model(input_shape)
+    # Fits model with raw images and trained labels
     history = fit_model(imgs, labels, model)
 
 if __name__ == '__main__':

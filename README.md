@@ -52,12 +52,18 @@ Deep Neural Net
 
 ## Results
 
+<img src = "figures/CNN_Baseline.png" width = 300>
+
 <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
+
+Over the same range of epochs, the fully connected deep cnn model performed drastically better than the single layered baseline.
+This is due to the added depth of the model which allows it to read much further into the complexity of each image. The deep model had a final mean squared error score of
+around 1/4 that of the baseline model.
 
 
 
 ### Predicted Lane Segments on previously seen data
-<img src = "figures/Combined_CNN2.png" width = 200>
+<img src = "figures/Combined_CNN2.png" width = 300>
 <img src = "figures/Combined_CNN3.png" width = 300>
 <img src = "figures/Combined_image_CNN3.png" width = 300>
 
@@ -80,6 +86,10 @@ to the pixel change between roadway and surrounding area.
 <img src = "figures/ezgif.com-gif-maker.gif" width = 300>
 <img src = "figures/ezgif.com-gif-maker1.gif" width = 300>
 <img src = "figures/ezgif.com-gif-maker2.gif" width = 300>
+
+The model seemed to struggle to predict lane markings when the road became particularly dark or shadowy. The model tends to break down when given dark and shadowy images,
+since the training dataset contains little to none of them. Since the unseen dataset is does not have associated labels generated with each image for ground truth,
+there would be no way to numerically evaluate the predictions without creating my own image label generator. 
 
 
 ## Moving Forward

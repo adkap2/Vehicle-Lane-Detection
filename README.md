@@ -63,7 +63,7 @@ I decided to terminate the training at 10 epochs as the model loss seemed to con
 ## Results
 
 
-Baseline          |  Fully Deep CNN
+Baseline          |  Fully Connected CNN
 :-------------------------:|:-------------------------:
 <img src = "figures/CNN_Baseline.png" width = 300> |  <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
@@ -94,9 +94,7 @@ When applying the model to unseen images, entire roadways tend to be marked rath
 This is likely due to the fact that lane markings can be difficult to identify as the difference in pixel color is not significant compared
 to the pixel change between roadway and surrounding area.
 
-<img src = "figures/ezgif.com-gif-maker.gif" width = 300>
-<img src = "figures/ezgif.com-gif-maker1.gif" width = 300>
-<img src = "figures/ezgif.com-gif-maker2.gif" width = 300>
+<img src = "figures/ezgif.com-gif-maker.gif" width = 300> <img src = "figures/ezgif.com-gif-maker1.gif" width = 300> <img src = "figures/ezgif.com-gif-maker2.gif" width = 300>
 
 The model seemed to struggle to predict lane markings when the road became particularly dark or shadowy. The model tends to break down when given dark and shadowy images,
 since the training dataset contains little to none of them. Since the unseen dataset is does not have associated labels generated with each image for ground truth,

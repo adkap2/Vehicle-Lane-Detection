@@ -1,18 +1,20 @@
 # Self Driving Car Simulator
 
-## Proposition
 
+**Vehicle Lane Detection**
 
-**Vehicle Lane Detection** 
-
+Autonomous driving is on track to be one of the next big revolutions in the coming years. Autonomous driving is to be used thoughout an breadth
+of industries including commerical, taxi, and personal. Autonomous vehicles require a perceptron module to comprehend
+the environment around them. The job of this is to detect Lanes, detect objects, track objects, and predict motion.
 In this project I use deep learning to detect vehicle lanes from road images. The model uses a fully convolutional neural network
-which outputs an image of a predicted lane.
+which when given a driving image to predict on, outputs an image of a predicted lane.
 
 ## Dataset
 
 - The data consists of a set of 12,764 raw training images along with marked lanes lanes used as labels for each image
 - The labeled images were generated from polynomial coefficents marking the lane for each image
 - Each image is downsized to a uniform format of (80x160x3)
+- Training date was taking from [here](https://www.dropbox.com/s/rrh8lrdclzlnxzv/full_CNN_train.p?dl=0)
 
 
 ## Running the code
@@ -42,7 +44,7 @@ can be compared against the labeled image.
 
 <img src = "figures/model_summary.png" width = 300>
 
-## Hyper Parameter Selection
+## Hypeparameter Selection
 - Batch Size: 128
 - Epochs: 10
 - Dropout: 0.2

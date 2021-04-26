@@ -52,8 +52,6 @@ Deep Neural Net
 
 ## Results
 
-<img src = "figures/FullyDeepCNNModelAccuracy.png" width = 300>
-
 <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
 
@@ -73,11 +71,13 @@ fitted to this data with raw images and polynomial labels fitted to the data.
 <img src = "figures/combined_unseen4.png" width = 300>
 <img src = "figures/combined_unseen8.png" width = 300>
 
+
+
 When applying the model to unseen images, entire roadways tend to be marked rather than specific lanes.
 This is likely due to the fact that lane markings can be difficult to identify as the difference in pixel color is not significant compared
 to the pixel change between roadway and surrounding area.
 
-
+<img src = "figures/ezgif.com-gif-maker.gif" width = 300>
 
 
 ## Moving Forward
@@ -87,7 +87,6 @@ to the pixel change between roadway and surrounding area.
 * [Pandas](https://pandas.pydata.org)
 * [Tensorflow Keras](https://www.tensorflow.org/api_docs/python/tf/keras/Model)
 * [OpenCV](https://pypi.org/project/opencv-python/)
-* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 * [NumPy](https://numpy.org)
 
 

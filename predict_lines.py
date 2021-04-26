@@ -54,13 +54,14 @@ def make_video():
     """ Takes images from image directory and generates
     video of overlayed images """
     img_array = []
-    for filename in glob.glob('unseen_images/*.png'):
+    files = sorted(glob.glob('continous_driving/*.png'))
+    for filename in files:
         img = cv2.imread(filename)
         height, width, layers = img.shape
         size = (width,height)
         img_array.append(img)
 
-    out = cv2.VideoWriter('unseen_images.avi',cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
+    out = cv2.VideoWriter('continous_driving.avi',cv2.VideoWriter_fourcc(*'DIVX'), 15, size)
 
     for i in range(len(img_array)):
         out.write(img_array[i])
@@ -81,17 +82,24 @@ def plot_side_by_side(image, lane_image):
 
     plt.show()
 
+#grab last 4 characters of the file name:
+def last_4chars(x):
+    return(x[0])
+
 def load_images(path):
     """ Loads image from filepath into image_list array"""
 
     image_list = []
     i = 0
-    for filename in glob.glob(path):
-        im = Image.open(filename)
-        image_list.append(im)
-        if i > 85: # Debugging error with having too many files open simulataneously
-            break
-        i += 1
+    files = sorted(glob.glob(path))
+    for filename in files:
+        if len(filename) == 85:
+            print(filename)
+            im = Image.open(filename)
+            image_list.append(im)
+            if i > 200: # Debugging error with having too many files open simulataneously
+                break
+            i += 1
     return image_list
 
 def predict_unseen(path, model, lanes):
@@ -100,14 +108,14 @@ def predict_unseen(path, model, lanes):
     """
     imgs = load_images(path)
 
-    for i, img in enumerate(imgs[0:10]):
+    for i, img in enumerate(imgs[0:200]):
         img = np.array(img)
         img = cv2.resize(img, (160,80))
         combined = make_lines(img, model, lanes)
-        plot_combined(combined)
+        # plot_combined(combined)
 
         im = Image.fromarray((combined).astype(np.uint8))
-        im.save(f"unseen_images/img{i}.png")
+        im.save(f"continous_driving/img{i}.png")
 
 def make_pred_seen(model, lanes):
     """ makes prediction on already seen images """
@@ -139,10 +147,11 @@ def main():
     lanes = Lanes()
     make_pred_seen(model, lanes)
 
-    path = "/Users/adam/Desktop/galvanize/capstones/semantic_lane_detect/data/data_road/testing/image_2/*.png"
+    # path = "/Users/adam/Desktop/galvanize/capstones/semantic_lane_detect/data/data_road/testing/image_2/*.png"
+    path = "/Users/adam/Desktop/galvanize/capstones/semantic_lane_detect/driving_dataset/*.jpg"
 
     predict_unseen(path, model, lanes)
-    # make_video()
+    make_video()
 
 
 if __name__=="__main__":

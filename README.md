@@ -37,7 +37,8 @@ this allows for complex attributes in an image to be fully recognized.
 
 The network is trained using mean squared error as the metric to minimize. This allows for lane predictions which significantly
 deviate from the expected outcome to be penalized disproportionately high. The mean squared error is computed against the correct lavel image.
-The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning.
+The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning. The output layer of the model is regression as an image array which can
+can be compared against the labeled image.
 
 <img src = "figures/model_summary.png" width = 300>
 
@@ -92,10 +93,16 @@ to the pixel change between roadway and surrounding area.
 
 The model seemed to struggle to predict lane markings when the road became particularly dark or shadowy. The model tends to break down when given dark and shadowy images,
 since the training dataset contains little to none of them. Since the unseen dataset is does not have associated labels generated with each image for ground truth,
-there would be no way to numerically evaluate the predictions without creating my own image label generator. 
+there would be no way to numerically evaluate the predictions without creating my own image label generator.
 
 
 ## Moving Forward
+- I would like to generate predicted images on my own person driving data
+- I plan to implement a transfer learning model using VGG16. This will handle the entirety of the encoding aspect of the Network
+- Build a flask app which takes in a given lane image and generates overlayed lane markings for that image
+- I want to combine the lane detection code with vehicle detection code using YOLO-V5
+- Build app that generates road predictions in real time while driving with a camera recording
+- Calcuate the radius of curvature for a lane in a given image
 
 ## Technologies Used
 * [Matplotlib](https://matplotlib.org)

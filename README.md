@@ -33,9 +33,13 @@ The model takes in the road image and encodes it up to a filter size of 1024 bef
 the final layer with a filter size of 1. The encoder decoder architecture allows for differing input and output sequences. Additionally,
 this allows for complex attributes in an image to be fully recognized.
 
+<img src = "figures/encoder_decoder.png">
+
 The network is trained using mean squared error as the metric to minimize. This allows for lane predictions which significantly
 deviate from the expected outcome to be penalized disproportionately high. The mean squared error is computed against the correct lavel image.
-The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning. 
+The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning.
+
+<img src = "figures/model_summary.png" width = 300>
 
 ## Hyper Parameter Selection
 - Batch Size: 128
@@ -44,10 +48,9 @@ The Adam optimizer is used to minimize this loss as it is a popular choice for d
 
 The model loss seemed to converge relatively well at 10 epochs while still taking significant time to train.
 
-<img src = "figures/encoder_decoder.png">
 
-Deep Neural Net
-<img src = "figures/model_summary.png" width = 300>
+
+
 
 
 ## Results

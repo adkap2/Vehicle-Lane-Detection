@@ -62,9 +62,6 @@ I decided to terminate the training at 10 epochs as the model loss seemed to con
 
 ## Results
 
-<img src = "figures/CNN_Baseline.png" width = 300>
-
-<img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
 Baseline          |  Fully Deep CNN
 :-------------------------:|:-------------------------:
@@ -77,9 +74,11 @@ around 1/4 that of the baseline model.
 
 
 ### Predicted Lane Segments on previously seen data
-<img src = "figures/Combined_CNN2.png" width = 300>
-<img src = "figures/Combined_CNN3.png" width = 300>
-<img src = "figures/Combined_image_CNN3.png" width = 300>
+<img src = "figures/Combined_CNN2.png" width = 300> | <img src = "figures/Combined_CNN3.png" width = 300> | <img src = "figures/Combined_image_CNN3.png" width = 300>
+
+
+
+
 
 The model showed posed relatively accurate lane segments when predicting on the previously trained data. This is clear as the model has already been
 fitted to this data with raw images and polynomial labels fitted to the data.

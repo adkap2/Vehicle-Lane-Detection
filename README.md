@@ -3,17 +3,17 @@
 
 **Vehicle Lane Detection**
 
-Autonomous driving is on track to be one of the next big revolutions in the coming years. Autonomous driving is to be used thoughout an breadth
-of industries including commerical, taxi, and personal. Autonomous vehicles require a perceptron module to comprehend
-the environment around them. The job of this is to detect Lanes, detect objects, track objects, and predict motion.
+Autonomous driving is on track to be one of the next big revolutions in the coming years. Autonomous driving is used throughout a breadth
+of industries including commercial, taxi, and personal. Autonomous vehicles require a perceptron module to comprehend
+the environment around them. The job of this is to detect lanes, detect objects, track objects, and predict motion.
 In this project I use deep learning to detect vehicle lanes from road images. The model uses a fully convolutional neural network
 which when given a driving image to predict on, outputs an image of a predicted lane.
 
 ## Dataset
 
-- The data consists of a set of 12,764 raw training images along with marked lanes lanes used as labels for each image
-- The labeled images were generated from polynomial coefficents marking the lane for each image
-- Each image is downsized to a uniform format of (80x160x3)
+- The data consists of a set of 12,764 raw training images along with marked lanes used as labels for each image
+- The labeled images were generated from polynomial coefficients marking the lane for each image
+- Each image is downsized to a uniform format of (80x160x3) pixels
 - Training image data was taken from [here](https://www.dropbox.com/s/rrh8lrdclzlnxzv/full_CNN_train.p?dl=0)
 - Training label data was taken from [here](https://www.dropbox.com/s/ak850zqqfy6ily0/full_CNN_labels.p?dl=0)
 - Example images are contained in the example_images directory
@@ -21,20 +21,20 @@ which when given a driving image to predict on, outputs an image of a predicted 
 ## Running the code
 **All code is stored in base directory**
 
-The final CNN model used can is stored in this directory as *full_CNN_model.h5*
+The final CNN model used is stored in this directory as [*full_CNN_model.h5*](https://github.com/adkap2/Vehicle-Lane-Detection/blob/main/full_CNN_model.h5)
 
 - To train the model, run
     ```
     python main.py
     ```
-- To generate image predictiction, run
+- To generate the image prediction, run
     ```
     python predict_lines.py
     ```
 
 ## Training
 
-The best trained model uses a fully convoluational neural network
+The best trained model uses a fully convolutional neural network
 The model takes in the road image and encodes it up to a filter size of 1024 before decoding it back down to
 the final layer with a filter size of 1. The encoder decoder architecture allows for differing input and output sequences. Additionally,
 this allows for complex attributes in an image to be fully recognized.
@@ -42,17 +42,17 @@ this allows for complex attributes in an image to be fully recognized.
 <img src = "figures/encoder_decoder.png">
 
 The network is trained using mean squared error as the metric to minimize. This allows for lane predictions which significantly
-deviate from the expected outcome to be penalized disproportionately high. The mean squared error is computed against the correct lavel image.
-The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning. The output layer of the model is regression as an image array which can
+deviate from the expected outcome to be penalized disproportionately high. The mean squared error is computed against the correct labeled image.
+The Adam optimizer is used to minimize this loss as it is a popular choice for deep learning. The output layer of the model is regression as an image array which
 can be compared against the labeled image.
 
 <img src = "figures/model_summary.png" width = 300>
 
-## Hypeparameter Selection
+## Hyperparameter Selection
 - Batch Size: 128
 - Epochs: 10
 - Dropout: 0.2
-
+r
 I decided to terminate the training at 10 epochs as the model loss seemed to converge relatively well while still before starting to overfit.
 
 ## Results
@@ -62,7 +62,7 @@ Baseline          |  Fully Connected CNN
 :-------------------------:|:-------------------------:
 <img src = "figures/CNN_Baseline.png" width = 300> |  <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
-Over the same range of epochs, the fully connected deep cnn model performed drastically better than the single layered baseline.
+Over the same range of epochs, the fully connected deep CNN model performed drastically better than the single layered baseline.
 This is due to the added depth of the model which allows it to read much further into the complexity of each image. The deep model had a final mean squared error score of
 around 1/4 that of the baseline model.
 
@@ -85,17 +85,17 @@ to the pixel change between roadway and surrounding area.
 <img src = "figures/ezgif.com-gif-maker.gif" width = 300> <img src = "figures/ezgif.com-gif-maker1.gif" width = 300> <img src = "figures/ezgif.com-gif-maker2.gif" width = 300>
 
 The model seemed to struggle to predict lane markings when the road became particularly dark or shadowy. The model tends to break down when given dark and shadowy images,
-since the training dataset contains little to none of them. Since the unseen dataset is does not have associated labels generated with each image for ground truth,
+since the training dataset contains very few. Since the unseen dataset does not have associated labels generated with each image for ground truth,
 there would be no way to numerically evaluate the predictions without creating my own image label generator.
 
 
 ## Moving Forward
-- I would like to generate predicted images on my own person driving data
-- I plan to implement a transfer learning model using VGG16. This will handle the entirety of the encoding aspect of the Network
+- I would like to generate predicted images on my own personal driving data
+- I plan to implement a transfer learning model using VGG16. This will handle the entirety of the encoding aspect of the network
 - Build a flask app which takes in a given lane image and generates overlayed lane markings for that image
-- I want to combine the lane detection code with vehicle detection code using YOLO-V5
+- I want to combine the lane detection code with vehicle detection code using [YOLO-V5](https://towardsdatascience.com/yolo-v5-object-detection-tutorial-2e607b9013ef)
 - Build app that generates road predictions in real time while driving with a camera recording
-- Calcuate the radius of curvature for a lane in a given image
+- Calculate the radius of curvature for a lane in a given image
 
 ## Technologies Used
 * [Matplotlib](https://matplotlib.org)

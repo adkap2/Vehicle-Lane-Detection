@@ -62,6 +62,12 @@ Baseline          |  Fully Connected CNN
 :-------------------------:|:-------------------------:
 <img src = "figures/CNN_Baseline.png" width = 300> |  <img src = "figures/FullyDeepCNNModelLoss.png" width = 300>
 
+```
+Baseline loss: 0.0752
+Fully connected CNN loss: 0.0059
+
+```
+
 Over the same range of epochs, the fully connected deep CNN model performed drastically better than the single layered baseline.
 This is due to the added depth of the model which allows it to read much further into the complexity of each image. The deep model had a final mean squared error score of
 around 1/4 that of the baseline model.

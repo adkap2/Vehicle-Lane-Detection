@@ -150,7 +150,7 @@ def fit_model(imgs, labels, model):
     callbacks = [EarlyStopping(monitor='loss', patience=3), ModelCheckpoint(filepath = 'model4.h5', monitor='val_loss', save_best_only=True)]
     # Fits model
     # Test out alternative model
-    model = load_model('baseline_cnn.h5')
+    # model = load_model('baseline_cnn.h5')
     history = model.fit_generator(datagen.flow(X_train, y_train, batch_size=batch_size), steps_per_epoch=len(X_train)/batch_size,
         epochs=epochs, verbose=1, callbacks=callbacks, validation_data=(X_val, y_val))
     # save_data(model, dataset)

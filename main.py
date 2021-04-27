@@ -1,10 +1,5 @@
 import os.path
 import tensorflow as tf
-import helper
-import warnings
-from distutils.version import LooseVersion
-import test as tests
-import time
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Softmax, UpSampling2D
@@ -12,7 +7,6 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers import Conv2DTranspose, Conv2D, MaxPooling2D
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 import pickle
-import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split

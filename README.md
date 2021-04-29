@@ -68,7 +68,7 @@ Fully connected CNN loss: 0.0059
 
 Over the same range of epochs, the fully connected deep CNN model performed drastically better than the single layered baseline.
 This is due to the added depth of the model which allows it to read much further into the complexity of each image. The deep model had a final mean squared error score of
-around 1/4 that of the baseline model.
+around 1/4 that of the baseline model. The sharp decline in loss during the inital few epochs suggests the model could be tuned to a slower learning rate.
 
 
 
@@ -98,8 +98,9 @@ there would be no way to numerically evaluate the predictions without creating m
 - I plan to implement a transfer learning model using VGG16. This will handle the entirety of the encoding aspect of the network
 - Build a flask app which takes in a given lane image and generates overlayed lane markings for that image
 - I want to combine the lane detection code with vehicle detection code using [YOLO-V5](https://towardsdatascience.com/yolo-v5-object-detection-tutorial-2e607b9013ef)
-- Build app that generates road predictions in real time while driving with a camera recording
+- I have a basic flask app lane predictor implementent, see video presentation for demonstation. I would like to host this remotely with AWS
 - Calculate the radius of curvature for a lane in a given image
+
 
 ## Technologies Used
 * [Matplotlib](https://matplotlib.org)

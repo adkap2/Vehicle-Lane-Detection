@@ -98,7 +98,7 @@ there would be no way to numerically evaluate the predictions without creating m
 - I plan to implement a transfer learning model using VGG16. This will handle the entirety of the encoding aspect of the network
 - Build a flask app which takes in a given lane image and generates overlayed lane markings for that image
 - I want to combine the lane detection code with vehicle detection code using [YOLO-V5](https://towardsdatascience.com/yolo-v5-object-detection-tutorial-2e607b9013ef)
-- I have a basic flask app lane predictor implementent, see video presentation for demonstation. I would like to host this remotely with AWS
+- I currently have a basic flask app lane predictor implemented, please see video presentation for demonstation. I would like to host this remotely with AWS.
 - Calculate the radius of curvature for a lane in a given image
 
 

@@ -50,6 +50,9 @@ can be compared against the labeled image.
 Batch Size: 128
 Epochs: 10
 Dropout: 0.2
+Optimizer: Adam
+Learning Rate: 0.001
+Activation: Relu
 ```
 
 I decided to terminate the training at 10 epochs as the model loss seemed to converge relatively well while still before starting to overfit.
